@@ -49,7 +49,7 @@ Before running this application, make sure you have:
 3. Activate the virtual environment:
    - Windows:
      ```bash
-     venv\Scripts\activate
+     venv/Scripts/activate
      ```
    - Linux/Mac:
      ```bash
