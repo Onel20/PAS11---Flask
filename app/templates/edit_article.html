@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Edit Artikel{% endblock %}
+{% block content %}
+<div class="edit-article">
+    <h2>Edit Artikel</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="title">Judul:</label>
+            <input type="text" name="title" id="title" value="{{ article.title }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subjek:</label>
+            <input type="text" name="subject" id="subject" value="{{ article.subject }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Konten:</label>
+            <textarea name="content" id="content" rows="6" required>{{ article.content }}</textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">Simpan Perubahan</button>
+            <a href="{{ url_for('routes.article_detail', article_id=article.id) }}" class="btn">Batal</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

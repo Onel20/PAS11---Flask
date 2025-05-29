@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Articles</h2>
+    {% if session.get('user') %}
+    <a href="{{ url_for('routes.add_article') }}" class="btn btn-primary">
+        <i class="bi bi-plus-lg"></i> New Article
+    </a>
+    {% endif %}
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for article in articles %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ article.subject }}</h6>
+                <p class="card-text text-muted small">By {{ article.username }}</p>
+                <a href="{{ url_for('routes.article_detail', article_id=article.id) }}" class="btn btn-outline-primary stretched-link">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <div class="alert alert-info">
+            No articles found. {% if session.get('user') %}Why not <a href="{{ url_for('routes.add_article') }}">create one</a>?{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

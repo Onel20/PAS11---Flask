@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Edit Komentar{% endblock %}
+
+{% block content %}
+<div class="edit-comment">
+    <h2>Edit Komentar</h2>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="comment_text">Komentar:</label>
+            <textarea name="comment_text" id="comment_text" required>{{ comment.comment_text }}</textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn">Simpan</button>
+            <a href="{{ url_for('routes.article_detail', article_id=comment.article_id) }}" class="btn">Batal</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
